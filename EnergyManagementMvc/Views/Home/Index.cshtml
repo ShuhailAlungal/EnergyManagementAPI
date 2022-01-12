@@ -1,0 +1,135 @@
+﻿@model List<EnergyManagementMvc.Models.Energy>
+<h1 style="color:orangered">Energy Management System</h1>
+
+<br />
+
+
+<style>
+     table {
+         width: 100%;
+         border-style: solid;
+        
+    }
+
+     th {
+         text-align: center;
+         font-size: 22px;
+         background-color: lightgrey;
+         border-style: solid;
+        
+    }
+
+    
+     td {
+         text-align: center;
+         border-style: ridge;
+        
+    }
+
+     .divForm {
+         border-style: ridge;
+        
+    }
+
+    
+</style>
+
+<div>
+        <div class="divForm">
+                <form asp-controller="Home" asp-action="Index" method="post" enctype="multipart/form-data">
+                        <label>Upload File</label>
+                        <input type="file" name="postedFile" />
+                        <input type="submit" value="Import" />
+            
+        </form>
+        
+    </div>
+        <div class="container">
+                <div class="row">
+                        @if (Model != null && Model.Count != 0)
+                {
+                            <table>
+                
+                <thead>
+                    
+                    <tr>
+                        
+                        <th>
+                                                            AccountId
+                            
+                        </th>
+                        
+                        <th>
+                                                            First Name
+                            
+                        </th>
+                        
+                        <th>
+                                                            Second Name
+                            
+                        </th>
+                        
+                        <th>
+                                                            Meter Reading
+                            
+                        </th>
+                        
+                        <th>
+                                                            Meter Value
+                            
+                        </th>
+                        
+                    </tr>
+                    
+                </thead>
+                
+                <tbody>
+                    
+                                            @foreach (var data in Model)
+                    {
+                    
+                    <tr>
+                        
+                        <td>
+                                                                @data.accountId
+                            
+                        </td>
+                        
+                        <td>
+                                                                @data.firstName
+                            
+                        </td>
+                        
+                        <td>
+                                                                @data.lastName
+                            
+                        </td>
+                        
+                        <td>
+                                                                @data.meterReadingDateTime
+                            
+                        </td>
+                        
+                        <td>
+                                                                @data.meterReadValue
+                            
+                        </td>
+                        
+                    </tr>
+                                            }
+                    
+                    
+                    
+                </tbody>
+                
+            </table>
+                        }
+            
+        </div>
+        
+        
+    </div>
+    
+</div>
+
+
