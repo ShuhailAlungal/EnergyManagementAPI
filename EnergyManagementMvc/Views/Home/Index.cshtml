@@ -3,7 +3,7 @@
 
 <br />
 
-
+<script src="~/lib/jquery/dist/jquery.js"></script>
 <style>
      table {
          width: 100%;
@@ -25,21 +25,14 @@
          border-style: ridge;
         
     }
-
-     .divForm {
-         border-style: ridge;
-        
-    }
-
     
 </style>
 
 <div>
-        <div class="divForm">
-                <form asp-controller="Home" asp-action="Index" method="post" enctype="multipart/form-data">
-                        <label>Upload File</label>
-                        <input type="file" name="postedFile" />
-                        <input type="submit" value="Import" />
+        <div>
+                <form asp-controller="Home" asp-action="Index" id="form" method="post" enctype="multipart/form-data">
+                        <input type="file" id="file" name="postedFile" />
+                        <button id="submit" class="btn btn-success" value="Save" >Save</button>
             
         </form>
         
@@ -131,5 +124,17 @@
     </div>
     
 </div>
+<script>
+    $("#submit").click(function () {
+        if ($("#file").val() == '') {
+            alert("Choose a csv file to upload");
+        }
+        else {
+            if (confirm("DO you sure wanna save?")) {
+                $("#submit").submit();
+            }
+        }
+    });
+</script>
 
 
